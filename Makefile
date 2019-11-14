@@ -43,3 +43,8 @@ test:
 	@mkdir -p ./obj
 	@mv $(OBJ) ./obj
 	@rm -rf $(SRC) $(INC)
+
+git:
+	@git add .
+	@git commit -m "-"
+	@git push
