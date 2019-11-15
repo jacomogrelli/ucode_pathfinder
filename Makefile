@@ -8,12 +8,15 @@ INC_LIB = ./libmx/libmx.a
 
 SRC = \
 main.c \
+pf_errorcheck_all.c 
 
 SRCF = \
-src/main.c
+src/main.c \
+src/pf_errorcheck_all.c 
 
 OBJ = \
-main.o
+main.o \
+pf_errorcheck_all.o 
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
 
@@ -33,6 +36,7 @@ uninstall:
 
 clean:
 	@rm -rf ./obj
+	@rm -rf $(OBJ) $(SRC) $(INC)
 
 reinstall: uninstall all
 

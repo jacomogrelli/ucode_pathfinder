@@ -180,7 +180,7 @@ mx_pop_front.o \
 mx_push_back.o \
 mx_push_front.o \
 mx_sort_list.o \
-mx_printerr.c
+mx_printerr.o
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
 

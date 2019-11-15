@@ -11,4 +11,7 @@
 #include <malloc/malloc.h>
 #include "../libmx/inc/libmx.h"
 
+//---ERROR PACK---
+void pf_errorcheck_all(char **argv, int argc);
+
 #endif
