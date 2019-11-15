@@ -8,7 +8,7 @@ INC_LIB = ./libmx/libmx.a
 
 SRC = \
 main.c \
-pf_errorcheck_all.c 
+pf_errorcheck_all.c
 
 SRCF = \
 src/main.c \
@@ -16,14 +16,14 @@ src/pf_errorcheck_all.c
 
 OBJ = \
 main.o \
-pf_errorcheck_all.o 
+pf_errorcheck_all.o
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
 
 all: install clean
 
 install:
-	@cd libmx && make
+	@cd libmx && make reinstall
 	@cp $(SRCF) $(INCF) .
 	@clang $(CFLAGS) -c $(SRC) -I $(INC)
 	@clang $(CFLAGS) $(INC_LIB) $(OBJ) -o $(NAME)

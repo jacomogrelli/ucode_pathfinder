@@ -9,6 +9,9 @@ char *mx_file_to_str(const char *file) {
     int f = open(file, O_RDONLY);
     if (f < 0) return NULL;
     int n = read(f, buf, sizeof(buf));
+    if (n == 0) {
+        return mx_strnew(0);
+    }
     if (n <= 0) return NULL;
     while (n > 0) {
     	k++;
