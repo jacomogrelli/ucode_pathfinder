@@ -127,6 +127,7 @@ src/mx_printerr.c \
 src/mx_isdigit.c \
 src/mx_isalpha.c
 
+
 OBJ = \
 mx_strncmp.o \
 mx_isspace.o \
@@ -187,6 +188,7 @@ mx_sort_list.o \
 mx_printerr.o \
 mx_isdigit.o \
 mx_isalpha.o
+
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
 
