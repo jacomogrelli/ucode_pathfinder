@@ -4,6 +4,7 @@ static void pf_error_invalid_argc(void);
 static void pf_error_invalid_name(char *argv);
 static void pf_error_empty(char *agrv);
 static void pf_error_invalid_1line(void);
+static void pf_error_invalid_lineval(int count);
 
 void pf_errorcheck_all(char **argv, int argc) {
     char *file_to_str = NULL;
@@ -17,13 +18,28 @@ void pf_errorcheck_all(char **argv, int argc) {
     if (file_to_str[0] == '\0') //проверка существует ли файл
     pf_error_empty(argv[1]);
     arr_str = mx_strsplit(file_to_str, '\n'); //разбиваем на массив строк
-    while (arr_str[0]) {
+    while (arr_str[0]) { //проверка первой строки
         if(!mx_isdigit(*arr_str[0]))
         pf_error_invalid_1line();
         arr_str[0]++;
     }
-
-
+    for (int i = 1; arr_str[i] != NULL; i++) { //проверка строк на корректность ввода данных
+        while (*arr_str[i] != '-' && arr_str[i]) {
+            if (!mx_isalpha(*arr_str[i]))
+            pf_error_invalid_lineval(i);
+            arr_str[i]++;
+        }
+        while (*arr_str[i] != ',' && arr_str[i]) {
+            if (!mx_isalpha(*arr_str[i]))
+            pf_error_invalid_lineval(i);
+            arr_str[i]++;
+        }
+        while (*arr_str[i] != '\n' && arr_str[i]) {
+            if (!mx_isdigit(*arr_str[i]))
+            pf_error_invalid_lineval(i);
+            arr_str[i]++;
+        }        
+    }
 }
 
 static void pf_error_invalid_argc(void) {
@@ -47,5 +63,12 @@ static void pf_error_empty(char *argv) {
 
 static void pf_error_invalid_1line(void) {
     mx_printerr("error: line 1 isn't valid\n");
+    exit (1);
+}
+
+static void pf_error_invalid_lineval(int count) {
+    mx_printerr("error: line ");
+    mx_printerr((const char *)count);
+    mx_printerr(" isn't valid\n");
     exit (1);
 }

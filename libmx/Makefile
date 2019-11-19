@@ -62,7 +62,8 @@ mx_push_back.c \
 mx_push_front.c \
 mx_sort_list.c \
 mx_printerr.c \
-mx_isdigit.c
+mx_isdigit.c \
+mx_isalpha.c
 
 
 SRCF = \
@@ -123,7 +124,8 @@ src/mx_push_back.c \
 src/mx_push_front.c \
 src/mx_sort_list.c \
 src/mx_printerr.c \
-src/mx_isdigit.c
+src/mx_isdigit.c \
+src/mx_isalpha.c
 
 OBJ = \
 mx_strncmp.o \
@@ -183,8 +185,8 @@ mx_push_back.o \
 mx_push_front.o \
 mx_sort_list.o \
 mx_printerr.o \
-mx_isdigit.o
-
+mx_isdigit.o \
+mx_isalpha.o
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
 
