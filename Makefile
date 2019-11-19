@@ -8,15 +8,18 @@ INC_LIB = ./libmx/libmx.a
 
 SRC = \
 main.c \
-pf_errorcheck_all.c
+pf_errorcheck_all.c \
+mx_isalpha.c
 
 SRCF = \
 src/main.c \
-src/pf_errorcheck_all.c 
+src/pf_errorcheck_all.c \
+src/mx_isalpha.c
 
 OBJ = \
 main.o \
-pf_errorcheck_all.o
+pf_errorcheck_all.o \
+mx_isalpha.o
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
 

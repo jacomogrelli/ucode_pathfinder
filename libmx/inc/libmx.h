@@ -19,7 +19,6 @@ typedef struct  s_list {
 int mx_strncmp(const char *s1, const char *s2, int n);
 bool mx_isspace(char c);
 bool mx_isdigit(int c);
-bool mx_isalpha(int c);
 void mx_printerr(const char *s);
 
 //------UTILS PACK------

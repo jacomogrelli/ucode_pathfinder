@@ -13,5 +13,6 @@
 
 //---ERROR PACK---
 void pf_errorcheck_all(char **argv, int argc);
+bool mx_isalpha(int c);
 
 #endif
