@@ -15,4 +15,7 @@
 void pf_errorcheck_all(char **argv, int argc);
 bool mx_isalpha(int c);
 
+//---PARTH PACK---
+char *pf_uniq_matrix(char *file_to_str);
+
 #endif

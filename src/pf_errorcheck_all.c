@@ -23,7 +23,7 @@ void pf_errorcheck_all(char **argv, int argc) {
         file_to_str++;
     }
     file_to_str++;
-    while(*file_to_str != '\0') {
+    while(1) {
         while(*file_to_str != '-' && *file_to_str) { //проверка первого города
             if(!mx_isalpha(*file_to_str))
             pf_error_invalid_lineval(line_count);
@@ -42,6 +42,7 @@ void pf_errorcheck_all(char **argv, int argc) {
             file_to_str++;
         }
         line_count++;
+        if(*file_to_str == '\0') break;
         file_to_str++;
     }
     return;
