@@ -9,13 +9,13 @@
 #include <stdbool.h>
 #include <fcntl.h>
 #include <malloc/malloc.h>
-#include "../libmx/inc/libmx.h"
+#include "libmx/inc/libmx.h"
 
 //---ERROR PACK---
 void pf_errorcheck_all(char **argv, int argc);
 
 //---PARTH PACK---
-char **pf_uniq_matrix(char **str);
+char **pf_uniq_matrix(char **matrix, int *isl_count);
 char **pf_matrix_init(char *argv, int *isl_count);
 
 #endif

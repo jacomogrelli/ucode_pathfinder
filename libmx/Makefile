@@ -5,6 +5,7 @@ INC = libmx.h
 INCF = inc/libmx.h
 
 SRC = \
+mx_isalpha.c \
 mx_strncmp.c \
 mx_isspace.c \
 mx_printchar.c \
@@ -63,10 +64,10 @@ mx_push_front.c \
 mx_sort_list.c \
 mx_printerr.c \
 mx_isdigit.c \
-mx_isalpha.c \
 mx_atoi.c
 
 SRCF = \
+src/mx_isalpha.c \
 src/mx_strncmp.c \
 src/mx_isspace.c \
 src/mx_printchar.c \
@@ -125,10 +126,10 @@ src/mx_push_front.c \
 src/mx_sort_list.c \
 src/mx_printerr.c \
 src/mx_isdigit.c \
-src/mx_isalpha.c \
 src/mx_atoi.c
 
 OBJ = \
+mx_isalpha.o \
 mx_strncmp.o \
 mx_isspace.o \
 mx_printchar.o \
@@ -187,7 +188,6 @@ mx_push_front.o \
 mx_sort_list.o \
 mx_printerr.o \
 mx_isdigit.o \
-mx_isalpha.o \
 mx_atoi.o
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
@@ -198,7 +198,7 @@ install:
 	@cp $(SRCF) .
 	@cp $(INCF) .
 	@clang $(CFLAGS) -c $(SRC) -I $(INC)
-	@ar rcs $(NAME) $(OBJ)
+	@ar -rc $(NAME) $(OBJ)
 	@mkdir -p obj
 	@mv $(OBJ) ./obj
 	@rm -rf $(SRC) $(INC)
