@@ -17,5 +17,6 @@ bool mx_isalpha(int c);
 
 //---PARTH PACK---
 char *pf_uniq_matrix(char *file_to_str);
+char ***pf_matrix_init(char **argv);
 
 #endif
