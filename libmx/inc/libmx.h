@@ -16,10 +16,13 @@ typedef struct  s_list {
 }         t_list;
 
 //------ADITIONAL------
+int mx_atoi(const char *str);
+bool mx_isalpha(int c);
 int mx_strncmp(const char *s1, const char *s2, int n);
 bool mx_isspace(char c);
 bool mx_isdigit(int c);
 void mx_printerr(const char *s);
+
 
 //------UTILS PACK------
 void mx_printchar(char c);

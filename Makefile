@@ -9,21 +9,18 @@ INC_LIB = ./libmx/libmx.a
 SRC = \
 main.c \
 pf_errorcheck_all.c \
-mx_isalpha.c \
 pf_uniq_matrix.c \
 pf_matrix_init.c
 
 SRCF = \
 src/main.c \
 src/pf_errorcheck_all.c \
-src/mx_isalpha.c \
 src/pf_uniq_matrix.c \
 src/pf_matrix_init.c
 
 OBJ = \
 main.o \
 pf_errorcheck_all.o \
-mx_isalpha.o \
 pf_uniq_matrix.o \
 pf_matrix_init.o
 
