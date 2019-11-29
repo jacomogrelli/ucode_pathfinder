@@ -10,7 +10,7 @@ int main (int argc, char **argv) {
     pf_errorcheck_all(argv, argc); //проверяем все ошибки, кроме совпадения к-ва островов
     file_to_str = mx_file_to_str(argv[1]); //считываем файл
     matrix_buf = pf_matrix_init(file_to_str, &islands_count);
-
+    
     matrix_uniq = pf_uniq_matrix(matrix_buf, &islands_count);
         // mx_print_strarr(matrix_buf, "\n");
     // for (int i = 0; matrix_buf[i] != NULL; i++) {

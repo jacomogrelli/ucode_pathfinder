@@ -17,13 +17,15 @@ void pf_errorcheck_all(char **argv, int argc) {
     pf_error_invalid_name(argv[1]);
     if (file_to_str[0] == '\0') //проверка на пустой файл
     pf_error_empty(argv[1]);
+    if (*file_to_str == '\n')
+        pf_error_invalid_1line();
     while (*file_to_str != '\n') { //проверка первой строки
         if(!mx_isdigit(*file_to_str))
         pf_error_invalid_1line();
         file_to_str++;
     }
     file_to_str++;
-    while (1) {
+    while (*file_to_str) {
         while (*file_to_str != '-' && *file_to_str) { //проверка первого города
             if (!mx_isalpha(*file_to_str))
             pf_error_invalid_lineval(line_count);
@@ -35,7 +37,10 @@ void pf_errorcheck_all(char **argv, int argc) {
             pf_error_invalid_lineval(line_count);
             file_to_str++;
         }
+
         file_to_str++;
+        if (*file_to_str == '\n')
+            pf_error_invalid_lineval(line_count);
         while (*file_to_str != '\n' && *file_to_str) { //проверка длинны моста
             if (!mx_isdigit(*file_to_str))            
             pf_error_invalid_lineval(line_count);
