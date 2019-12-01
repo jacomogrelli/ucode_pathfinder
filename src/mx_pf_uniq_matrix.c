@@ -1,65 +1,31 @@
 #include "pathfinder.h"
 
-char **mx_pf_uniq_matrix(char **matrix, int *isl_count) {
-    
+static void pf_error_num(int i, int isl);
 
-    // int i = mx_atoi(matrix[2]);
-    if (*isl_count > 0)
-    printf("%d\n", *isl_count);
-    return matrix;
+char **mx_pf_uniq_matrix(char **matrix, int *isl_count) {
+    char **res = malloc(sizeof(char *) * *isl_count);
+    int i = 1;
+
+    res[0] = mx_strdup(matrix[0]);
+    for (int k = 1; matrix[k] != NULL; k++) {
+        pf_error_num(i, *isl_count);
+        for (int j = 0; j != k && mx_strcmp(res[j], matrix[k]) != 0; j++) {
+            if (j + 1 == k) {
+                res[i] = mx_strdup(matrix[k]);
+                i++;
+            }
+        }
+        if (k == 11)
+        mx_print_strarr(res, "\n");
+        if (matrix[k + 1] == NULL)
+            break;
+    }
+    return res;
 }
 
-// char **buf = NULL;
-//     char **res = NULL;
-//     int count = 1;
-//     int k = 2;
-//     if (*isl_count > 0)
-
-//     while (matrix[count] != NULL) {
-//         count++;
-//     }
-//         // mx_print_strarr(matrix, "\n");
-//         // mx_printint(count);
-//     buf = (char **)malloc(sizeof(char *) * count);
-//     for (int i = 0; i < count; i++) {
-//         buf[i] = mx_strdup(matrix[i]);
-//     }
-//     buf[count] = NULL;
-//     for (int i = 0; buf[i]; i++) {
-//         printf("%s\n", buf[i]);
-//     }
-
-//     for (; buf[k] != NULL; k += 2) {
-//         for (int i = k; buf[i] != NULL; i++) {
-//             buf[i] = buf[i + 1];
-//             count = i;
-//         }
-//     }
-//     k = mx_bubble_sort(buf, count);
-//     for (int i = 0; buf[i + 1] != NULL; i++) {
-//         for (int j = i + 1; buf[j] != NULL; j++) {
-//             if (mx_strcmp(buf[i], buf[j]) == 0) {
-//                 buf[i] = "del";
-//                 i++;
-//                 count--;
-//             }
-//         }
-//     }
-//     // mx_printint(count);
-//     // if (*isl_count != count) {
-//     //     mx_printerr("error: invalid number of islands\n");
-//     //     exit (-1);
-//     // }
-//     res = malloc(sizeof(char *) * count);
-//     for (int i = 0, j = 0; buf[j] != NULL; j++) {
-//         if (mx_strcmp(buf[j], "del") != 0) {
-//             res[i] = mx_strdup(buf[j]);
-//             i++;
-//         }
-//     }
-//     res[count] = NULL;
-//     // mx_print_strarr(res, "\n");
-//     // mx_printstr("-------------");
-//     // mx_print_strarr(matrix, "\n");
-//     // mx_del_strarr(&buf);
-//     return res;
+static void pf_error_num(int i, int isl) {
+    if (i == isl) {
+        mx_printerr("error: invalid number of islands\n");
+        exit (-1);
+    }
+}
