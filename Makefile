@@ -8,21 +8,24 @@ INC_LIB = ./libmx/libmx.a
 
 SRC = \
 main.c \
-pf_errorcheck_all.c \
-pf_uniq_matrix.c \
-pf_matrix_init.c
+mx_pf_errorcheck_all.c \
+mx_pf_uniq_matrix.c \
+mx_pf_matrix_init.c \
+mx_pf_error_line_check.c
 
 SRCF = \
 src/main.c \
-src/pf_errorcheck_all.c \
-src/pf_uniq_matrix.c \
-src/pf_matrix_init.c
+src/mx_pf_errorcheck_all.c \
+src/mx_pf_uniq_matrix.c \
+src/mx_pf_matrix_init.c \
+src/mx_pf_error_line_check.c
 
 OBJ = \
 main.o \
-pf_errorcheck_all.o \
-pf_uniq_matrix.o \
-pf_matrix_init.o
+mx_pf_errorcheck_all.o \
+mx_pf_uniq_matrix.o \
+mx_pf_matrix_init.o \
+mx_pf_error_line_check.o
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
 

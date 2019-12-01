@@ -1,6 +1,6 @@
 #include "pathfinder.h"
 
-char **pf_matrix_init(char *argv, int *isl_count) {
+char **mx_pf_matrix_init(char *argv, int *isl_count) {
     int count = mx_count_words(argv, '\n');
     char **temp = malloc(sizeof (char *) * count);
     char **temp2 = malloc(sizeof(char *) * ((count - 1) * 3));

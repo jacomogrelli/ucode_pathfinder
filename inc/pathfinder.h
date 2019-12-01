@@ -12,10 +12,11 @@
 #include "libmx/inc/libmx.h"
 
 //---ERROR PACK---
-void pf_errorcheck_all(char **argv, int argc);
+char **mx_pf_errorcheck_all(char **argv, int argc, int *isl_count);
+void mx_pf_line_check(char *mat);
 
 //---PARTH PACK---
-char **pf_uniq_matrix(char **matrix, int *isl_count);
-char **pf_matrix_init(char *argv, int *isl_count);
+char **mx_pf_uniq_matrix(char **matrix, int *isl_count);
+char **mx_pf_matrix_init(char *argv, int *isl_count);
 
 #endif

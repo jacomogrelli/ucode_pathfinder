@@ -1,11 +1,11 @@
 #include "pathfinder.h"
 
-char **pf_uniq_matrix(char **matrix, int *isl_count) {
+char **mx_pf_uniq_matrix(char **matrix, int *isl_count) {
     
 
     // int i = mx_atoi(matrix[2]);
     if (*isl_count > 0)
-    printf("%d\n", );
+    printf("%d\n", *isl_count);
     return matrix;
 }
 
