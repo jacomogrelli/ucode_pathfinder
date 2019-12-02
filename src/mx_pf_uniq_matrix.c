@@ -1,6 +1,6 @@
 #include "pathfinder.h"
 
-static void pf_error_num(int i, int isl);
+static void pf_error_num();
 static char **pf_temp_matrix(char **src);
 static void pf_dupdel(char **buf, int *count);
 
@@ -18,11 +18,9 @@ char **mx_pf_uniq_matrix(char **matrix, int *isl_count) {
     return temp;
 }
 
-static void pf_error_num(int i, int isl) {
-    if (i == isl) {
-        mx_printerr("error: invalid number of islands\n");
-        exit (-1);
-    }
+static void pf_error_num() {
+    mx_printerr("error: invalid number of islands\n");
+    exit (-1);
 }
 
 static char **pf_temp_matrix(char **src) {
@@ -44,43 +42,18 @@ static char **pf_temp_matrix(char **src) {
 static void pf_dupdel(char **buf, int *count) {
     int len = 0;
 
-    mx_print_strarr(buf, "\n");
-    printf("______\n");
     while (buf[++len]);
     for (int i = 0; i < len; i++) {
-        for (int k = 1; k < len; k++) {
+        for (int k = i + 1; k < len; k++) {
             if (mx_strcmp(buf[i], buf[k]) == 0) {
                 for (int j = k; j < len; j++) {
                     buf[j] = buf[j + 1];
                 }
                 len--;
-                // i = 0;
-                // k = 1;
+                mx_strdel(&buf[len]);
             }
         }
     }
-    buf[len] = NULL;
-    mx_print_strarr(buf, "\n");
     if (len != *count)
-        pf_error_num(1, 1);
+        pf_error_num();
 }
-
-    // char **res = malloc(sizeof(char *) * *isl_count);
-    // int i = 1;
-
-    // res[0] = mx_strdup(matrix[0]);
-    // res[1] = NULL;
-    // for (int k = 1; matrix[k] != NULL; k++) {
-    //     pf_error_num(i, *isl_count);
-    //     for (int j = 0; res[j] || mx_strcmp(res[j], matrix[k]) != 0; j++) {
-    //         if (res[j + 1] == NULL) {
-    //             res[i] = mx_strdup(matrix[k]);
-    //             res[i + 1] = NULL;
-    //             printf("%s\n", res[i]);
-    //             i++;
-    //         }
-    //     }
-    //     if (matrix[k + 1] == NULL)
-    //         break;
-    // }
-    // return res;
