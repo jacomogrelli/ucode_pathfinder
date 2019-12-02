@@ -50,8 +50,8 @@ static void pf_dupdel(char **buf, int *count) {
     for (int i = 0; i < len; i++) {
         for (int k = 1; k < len; k++) {
             if (mx_strcmp(buf[i], buf[k]) == 0) {
-                for (int j = k; j < len; j++) {
-                    buf[j] = buf[j + 1];
+                for (int j = k; k < len; k++) {
+                    buf[k] = buf[k + 1];
                 }
                 len--;
                 // i = 0;

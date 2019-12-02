@@ -27,7 +27,7 @@ mx_pf_uniq_matrix.o \
 mx_pf_matrix_init.o \
 mx_pf_error_line_check.o
 
-CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
+CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic -g
 
 all: install clean
 
