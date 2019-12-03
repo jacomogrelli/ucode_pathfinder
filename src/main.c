@@ -9,7 +9,8 @@ int main (int argc, char **argv) {
     mat = mx_pf_errorcheck_all(argv, argc, &isl_count);
     uniq_mat = mx_pf_uniq_matrix(mat, &isl_count);
     adj_mat = mx_pf_adjmat(mat, uniq_mat, isl_count);
-
+}
+    // //печать матрицы интов
     // mx_print_strarr(uniq_mat, "\n");
     // mx_printstr("___________________\n");
 
@@ -19,5 +20,3 @@ int main (int argc, char **argv) {
     //     }
     //     printf("%d\n", y);
     // }
-    
-}
