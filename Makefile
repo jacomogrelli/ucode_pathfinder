@@ -11,21 +11,24 @@ main.c \
 mx_pf_errorcheck_all.c \
 mx_pf_uniq_matrix.c \
 mx_pf_matrix_init.c \
-mx_pf_error_line_check.c
+mx_pf_error_line_check.c \
+mx_pf_adjmat.c
 
 SRCF = \
 src/main.c \
 src/mx_pf_errorcheck_all.c \
 src/mx_pf_uniq_matrix.c \
 src/mx_pf_matrix_init.c \
-src/mx_pf_error_line_check.c
+src/mx_pf_error_line_check.c \
+src/mx_pf_adjmat.c
 
 OBJ = \
 main.o \
 mx_pf_errorcheck_all.o \
 mx_pf_uniq_matrix.o \
 mx_pf_matrix_init.o \
-mx_pf_error_line_check.o
+mx_pf_error_line_check.o \
+mx_pf_adjmat.o
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic -g
 

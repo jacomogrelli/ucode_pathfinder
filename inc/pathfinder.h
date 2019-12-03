@@ -18,5 +18,6 @@ void mx_pf_line_check(char *mat);
 //---PARTH PACK---
 char **mx_pf_uniq_matrix(char **matrix, int *isl_count);
 char **mx_pf_matrix_init(char *argv, int *isl_count);
+int **mx_pf_adjmat(char **mat, char **uniq_mat, int count);
 
 #endif
