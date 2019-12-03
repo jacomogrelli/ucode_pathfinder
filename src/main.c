@@ -3,6 +3,7 @@
 int main (int argc, char **argv) {
     char **matrix = NULL;
     char **uniq_matrix = NULL;
+    char **rout_mat = NULL;
     int isl_count = 0;
 
     matrix = mx_pf_errorcheck_all(argv, argc, &isl_count);

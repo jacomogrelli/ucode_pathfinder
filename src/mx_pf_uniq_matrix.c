@@ -6,15 +6,9 @@ static void pf_dupdel(char **buf, int *count);
 
 char **mx_pf_uniq_matrix(char **matrix, int *isl_count) {
     char **temp = NULL;
-    if (*isl_count > 0)
-
+    
     temp = pf_temp_matrix(matrix);
     pf_dupdel(temp, isl_count);
-    mx_print_strarr(temp, "\n");
-
-
-    if (temp[0] == NULL)
-    pf_error_num(4, 5);
     return temp;
 }
 
