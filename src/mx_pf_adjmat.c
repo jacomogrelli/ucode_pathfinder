@@ -7,13 +7,13 @@ int **mx_pf_adjmat(char **mat, char **uniq_mat, int count) {
     int x = 0;
     int y = 0;
 
-    // for (int y = 0, x = 0; y < count; y++) {
-    //     for(;adj_mat[y][x]; x++) {
-    //         printf(" %d ", adj_mat[y][x]);
-    //     }
-    //     printf("\n");
-    // }
-    printf("%d\n", adj_mat[3][2]);
+    for (int y = 0; y < count; y++) {
+        for(int x = 0; x < count; x++) {
+            printf(" %d ", adj_mat[y][x]);
+        }
+        printf("\n");
+    }
+    // printf("%d\n", adj_mat[3][2]);
     for (int i = 0; mat[i] != NULL; i += 3) {
         for (int k = 0; uniq_mat[k]; k++) { //находим в матрице уникальных Х
             if (mx_strcmp(mat[i], uniq_mat[k]) == 0)
