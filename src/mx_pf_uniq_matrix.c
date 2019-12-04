@@ -44,6 +44,7 @@ static void pf_dupdel(char **buf, int *count) {
                     buf[j] = buf[j + 1];
                 }
                 len--;
+                k -= 1;
                 mx_strdel(&buf[len]);
             }
         }
