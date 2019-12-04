@@ -9,6 +9,13 @@ int main (int argc, char **argv) {
     mat = mx_pf_errorcheck_all(argv, argc, &isl_count);
     uniq_mat = mx_pf_uniq_matrix(mat, &isl_count);
     adj_mat = mx_pf_adjmat(mat, uniq_mat, isl_count);
+        for (int y = 0, x = 0; y < isl_count; y++) {
+        for(;adj_mat[y][x]; x++) {
+            printf(" %d ", adj_mat[y][x]);
+        }
+        printf("%d\n", y);
+    }
+
 }
     // //печать матрицы интов
     // mx_print_strarr(uniq_mat, "\n");
