@@ -2,7 +2,7 @@
 
 char **mx_pf_matrix_init(char *argv, int *isl_count) {
     int count = mx_count_words(argv, '\n');
-    char **temp = malloc(sizeof (char *) * count);
+    char **temp = malloc(sizeof (char *) * count + 1);
     char **temp2 = malloc(sizeof(char *) * ((count - 1) * 3 + 1));
 
     temp = mx_strsplit(argv, '\n');

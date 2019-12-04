@@ -10,12 +10,13 @@ void mx_pf_line_check(char *mat) {
     int line = 2;
 
     mat = pf_skip_1line(mat);
-    while (1) {
+    while (*mat) {
         mat = pf_1word(mat, line);
         mat = pf_2word(mat, line);
         mat = pf_3word(mat, line);
         line++;
-        if (*mat == '\0') break;
+        if (*mat == '\0')
+            break;
         mat++;
     }
 }
@@ -34,7 +35,7 @@ static char *pf_skip_1line(char *mat) {
 }
 
 static char *pf_1word(char *mat, int line) {
-    if (*mat == '-' || *mat == '\0') //\0 отсекает последнюю пустую строку
+    if (*mat == '-') //\0 отсекает последнюю пустую строку
         pf_error_invalid_lineval(line);
     while (*mat != '-' && *mat) { //проверка первого города
         if (!mx_isalpha(*mat))

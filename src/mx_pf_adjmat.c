@@ -19,6 +19,14 @@ int **mx_pf_adjmat(char **mat, char **uniq_mat, int count) {
         adj_mat[y][x] = mx_atoi(mat[i + 2]); //записываем расстояние
         adj_mat[x][y] = adj_mat[y][x];       //и зеркально, т.к. граф ненапр
     }
+    //     for (int y = 0; y < count; y++) {
+    //     for(int x = 0; x < count; x++) {
+    //         printf(" %d ", adj_mat[y][x]);
+    //     }
+    //     printf("\n");
+    // }
+
+
     return adj_mat;
 }
 

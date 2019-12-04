@@ -13,7 +13,7 @@ char **mx_pf_errorcheck_all(char **argv, int argc, int *isl_count) {
     pf_error_invalid_1line(str); //проверка 1 строки
     matrix = mx_pf_matrix_init(str, isl_count);
     mx_pf_line_check(str);
-    // mx_strdel(&str);
+    mx_strdel(&str);
     return matrix;
 }
 

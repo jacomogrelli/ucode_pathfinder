@@ -1,34 +1,26 @@
-#include "libmx.h"
+#include "libmx.h" 
 
 char *mx_file_to_str(const char *file) {
-    if (!file) return NULL;
-    int k = 0;
-    char buf[1];
+    int file_descriptor;
+    int file_length = 0;
+    int i = 0;
+    char buffer[1];
+    char *target_str;
 
-    // count bytes
-    int f = open(file, O_RDONLY);
-    if (f < 0) return NULL;
-    int n = read(f, buf, sizeof(buf));
-    if (n == 0) {
-        return mx_strnew(0);
+    if (file == NULL) return NULL;
+    file_descriptor = open(file, O_RDONLY);
+    if (file_descriptor < 0) return NULL;
+    while(read(file_descriptor, buffer, 1)) file_length++;
+    if (close(file_descriptor) < 0) return NULL;
+    target_str = mx_strnew(file_length);
+    if (target_str == NULL) return NULL;
+    file_descriptor = open(file, O_RDONLY);
+    if (file_descriptor < 0) return NULL;
+    while(read(file_descriptor, buffer, 1)) {
+        target_str[i] = buffer[0];
+        i++;
     }
-    if (n <= 0) return NULL;
-    while (n > 0) {
-    	k++;
-    	n = read(f, buf, sizeof(buf));
-    }
-    close(f);
-    
-    // copy to string
-    f = open(file, O_RDONLY);
-    char *s = mx_strnew(k);
-    char *p = s;
-    int m = read(f, buf, sizeof(buf));
-    while (m > 0) {
-    	*s = *buf;
-    	m = read(f, buf, sizeof(buf));
-    	s++;
-    }    
-    close(f);
-	return p;
+    target_str[i] = '\0';
+    if (close(file_descriptor) < 0) return NULL;
+    return target_str;
 }
