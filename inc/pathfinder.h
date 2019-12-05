@@ -19,6 +19,6 @@ void mx_pf_line_check(char *mat);
 char **mx_pf_uniq_matrix(char **matrix, int *isl_count);
 char **mx_pf_matrix_init(char *argv, int *isl_count);
 int **mx_pf_adjmat(char **mat, char **uniq_mat, int count);
-char **mx_pf_pink_floyd(char **mat, char**uniq_mat, int **adj_mat, int count);
+int **mx_pf_pink_floyd(int **adj_mat, int count);
 
 #endif

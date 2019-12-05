@@ -1,7 +1,6 @@
 #include "pathfinder.h"
 
 static void pf_error_invalid_lineval(int line);
-static char *pf_skip_1line(char *mat);
 static char *pf_1word(char *mat, int line);
 static char *pf_2word(char *mat, int line);
 static char *pf_3word(char *mat, int line);
@@ -9,7 +8,9 @@ static char *pf_3word(char *mat, int line);
 void mx_pf_line_check(char *mat) {
     int line = 2;
 
-    mat = pf_skip_1line(mat);
+    while (*mat != '\n')
+        mat++;
+    mat++;
     while (*mat) {
         mat = pf_1word(mat, line);
         mat = pf_2word(mat, line);
@@ -26,12 +27,6 @@ static void pf_error_invalid_lineval(int line) {
     mx_printerr(mx_itoa(line));
     mx_printerr(" is not valid\n");
     exit (-1);
-}
-
-static char *pf_skip_1line(char *mat) {
-    while (*mat != '\n')
-        mat++;
-    return mat + 1;
 }
 
 static char *pf_1word(char *mat, int line) {

@@ -19,14 +19,6 @@ int **mx_pf_adjmat(char **mat, char **uniq_mat, int count) {
         adj_mat[y][x] = mx_atoi(mat[i + 2]); //записываем расстояние
         adj_mat[x][y] = adj_mat[y][x];       //и зеркально, т.к. граф ненапр
     }
-    //     for (int y = 0; y < count; y++) {
-    //     for(int x = 0; x < count; x++) {
-    //         printf(" %d ", adj_mat[y][x]);
-    //     }
-    //     printf("\n");
-    // }
-
-
     return adj_mat;
 }
 
@@ -36,7 +28,7 @@ static int **pf_adjmat0(int c) {
     for (int y = 0; y < c; y++) {
         buf[y] = (int *)malloc(sizeof(int) * c);
         for (int x = 0; x < c; x++) {
-            buf[y][x] = 2147483647;
+            buf[y][x] = 40000;
             if (x == y) //записываем 0 что бы исключить круги
                 buf[y][x] = 0;
         }
