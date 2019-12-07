@@ -42,6 +42,7 @@ int main (int argc, char **argv) {
 
     mx_del_strarr(&mat);
     mx_del_strarr(&uniq_mat);
+    system ("leaks pathfinder");
 
 }
     // //печать матрицы интов
