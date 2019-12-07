@@ -40,9 +40,9 @@ int main (int argc, char **argv) {
 
 
 
-    mx_del_strarr(&mat);
-    mx_del_strarr(&uniq_mat);
-    system ("leaks pathfinder");
+    // mx_del_strarr(&mat);
+    // mx_del_strarr(&uniq_mat);
+    system ("leaks -q pathfinder");
 
 }
     // //печать матрицы интов
