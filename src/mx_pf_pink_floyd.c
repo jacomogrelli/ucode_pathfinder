@@ -25,8 +25,6 @@ static int **pf_rout_mat_init(int c) {
         rout_mat[y] = (int *)malloc(sizeof(int) * c);
         for (int x = 0; x < c; x++) {
             rout_mat[y][x] = x;
-            // if (y == x)
-            //     rout_mat[y][x] = 0;
         }
     }
     return rout_mat;
