@@ -1,6 +1,6 @@
 #include "libmx.h"
 
-static int mx_wordlen(const char *s, char c) {
+static int wordlen(const char *s, char c) {
     int i = 0;
     char *temp = (char *)s;
 
@@ -8,7 +8,7 @@ static int mx_wordlen(const char *s, char c) {
     return i;
 }
 
-char **mx_strsplit(const char *s, char c) {
+char **mx_strsplit(const char *s, char c) {    
     if (!s) return NULL;
 
     char *tmp = (char *)s;
@@ -19,15 +19,15 @@ char **mx_strsplit(const char *s, char c) {
 
     count = mx_count_words(tmp, c);
     res = (char **)malloc((count + 1) * sizeof(char *));
-    while(*s && *s != '\0') {
-        if (*s != c) {
-            wl = mx_wordlen(s, c);
-            res[i] = mx_strnew(mx_wordlen(s, c));
-            mx_strncpy(res[i], s, wl);
+    while(*tmp && *tmp != '\0') {
+        if (*tmp != c) {
+            wl = wordlen(tmp, c);
+            res[i] = mx_strnew(wordlen(tmp, c));
+            res[i] = mx_strncpy(res[i], tmp, wl);
             i++;
-            s += wl;
+            tmp += wl;
         }
-        s++;
+        tmp++;
     }
     res[i] = NULL;
     return res;

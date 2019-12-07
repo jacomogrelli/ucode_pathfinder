@@ -61,7 +61,7 @@ reinstall: uninstall all
 test:
 	@cp $(SRCF) $(INCF) .
 	@clang $(CFLAGS) -c $(SRC) -I $(INC)
-	@clang $(CFLAGS) $(INC_LIB) $(OBJ) -o $(NAME) -g
+	@clang $(CFLAGS) $(INC_LIB) $(OBJ) -o $(NAME)
 	@mkdir -p ./obj
 	@mv $(OBJ) ./obj
 	@rm -rf $(SRC) $(INC)

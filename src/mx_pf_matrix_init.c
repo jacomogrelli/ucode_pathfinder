@@ -6,6 +6,7 @@ char **mx_pf_matrix_init(char *argv, int *isl_count) {
     char **temp2 = malloc(sizeof(char *) * ((count - 1) * 3 + 1));
 
     temp = mx_strsplit(argv, '\n');
+    mx_print_strarr(temp, "\n");
     *isl_count = mx_atoi(temp[0]);
     for (int i = 1, k = 0; i < count; i++) {
         size_t c_min = mx_get_char_index(temp[i], '-');
