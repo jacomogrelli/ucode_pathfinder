@@ -1,0 +1,96 @@
+#include "pathfinder.h"
+
+static int *pf_s_init(int *S, int count);
+static int *pf_s_fill(int *S, int index);
+static int *pf_p_init(int *P, int count, int index);
+static bool pf_flag(int *mat, int i);
+
+void mx_pf_pink_floyd(int **adj_mat, int count) {
+    int *S = malloc(sizeof(int) * count + 1);
+    int *path = malloc(sizeof(int) * count);
+    int *P = malloc(sizeof(int) * count + 1);
+    int *P1 = malloc(sizeof(int) * count + 1);
+
+    for (int i = 0, min = 0, min_i = 0; i < count; i++) {
+        path = adj_mat[i];
+        S = pf_s_init(S, count);
+        S = pf_s_fill(S, i);
+        P = pf_p_init(P, count, i);
+        P1 = pf_p_init(P1, count, i);
+        for (int k = 0; k < count; k++) {
+            min = 0;
+            for (int j = 0; S[j] != -3; j++) {
+                if (pf_flag(S, j)) {
+                    if ((min > path[j] || min == 0) && path[j] != 0) {
+                        min = path[j];
+                        min_i = j;
+                    }
+                }
+            }
+            S = pf_s_fill(S, min_i);
+            for (int j = 0; j < count; j++) {
+                if (pf_flag(S, j)) {
+                    if ((min + adj_mat[min_i][j] < path[j] || path[j] == 0)
+                    && adj_mat[min_i][j]) {
+                        path[j] = min + adj_mat[min_i][j];
+                        P[j] = min_i;
+                        P1[j] = min_i;
+                    }
+                    if (min + adj_mat[min_i][j] == path[j]) {
+                        P[j] = min_i;
+                    }
+                }
+            }
+        }
+        printf("path ");
+        for (int k = 0; k < count; k++) {
+            printf("%d ", path[k]);
+        }
+        printf("\n");
+        printf("P ");
+        for (int k = 0; k < count; k++) {
+            printf("%d ", P[k]);
+        }
+        printf("\n");
+        printf("P1 ");
+        for (int k = 0; k < count; k++) {
+            printf("%d ", P1[k]);
+        }
+        printf("\n");
+    }
+}
+
+static bool pf_flag(int *mat, int i) {
+    for (int j = 0; mat[j] != -3; j++) {
+        if (mat[j] == i)
+            return false;
+    }
+    return true;
+}
+
+static int *pf_s_init(int *S, int count) {
+    for (int i = 0; i < count; i++) {
+        S[i] = -1;
+    }
+    S[count] = -3;
+    return S;
+}
+
+static int *pf_p_init(int *P, int count, int index) {
+    for (int i = 0; i < count; i++) {
+        P[i] = index;
+    }
+    P[count] = -3;
+    return P;
+}
+
+static int *pf_s_fill(int *S, int index) {
+    for (int i = 0; S[i] != -3; i++) {
+        if (S[i] == -1) {
+            S[i] = index;
+            break;
+        }
+    }
+    return S;
+}
+

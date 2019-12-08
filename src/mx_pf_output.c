@@ -1,37 +1,35 @@
 #include "pathfinder.h"
 
-static void pf_first_part(char *dep_point, char *des_point);
-static void pf_last_part(char *des_point, int adj_mat);
+static int *pf_stack_fill(int *res);
 
-void mx_pf_output(char **uniq_mat, int **adj_mat, int **rout_mat)
-{
+void mx_pf_output(char **uniq_mat, int **adj_mat, int **rout_mat) {
+    int *stack = malloc(sizeof(int) * 10);
+    
+    int a = 1;
+
+    if (adj_mat[0][0] == 0)
     for (int i = 0; uniq_mat[i]; i++) {
         for (int j = i + 1; uniq_mat[j]; j++) {
-            pf_first_part(uniq_mat[i], uniq_mat[j]);
+            stack = pf_stack_fill(stack);
+            stack[0] = j;
             for (int k = rout_mat[i][j]; k != rout_mat[i][k];) {
-                mx_printstr(uniq_mat[k]);
-                mx_printstr(" -> ");
-                k = rout_mat[i][k];
+                stack[a] = rout_mat[i][k];
+                a++;
             }
-            pf_last_part(uniq_mat[j], adj_mat[i][j]);
+            stack[a] = i;
+            a = 1;
         }
+
+    for (int b = 0; b < 10; b++) {
+        printf("%d ", stack[b]);
+    }
+    printf("\n");
     }
 }
 
-static void pf_first_part(char *dep_point, char *des_point) {
-    mx_printstr("========================================\n");
-    mx_printstr("Path: ");
-    mx_printstr(dep_point);
-    mx_printstr(" -> ");
-    mx_printstr(des_point);
-    mx_printstr("\nRoute: ");
-    mx_printstr(dep_point);
-    mx_printstr(" -> ");
-}
-
-static void pf_last_part(char *des_point, int adj_mat) {
-    mx_printstr(des_point);
-    mx_printstr("\nDistance: ");
-    mx_printint(adj_mat);
-    mx_printstr("\n========================================\n");
+static int *pf_stack_fill(int *res) {
+    for (int i = 0; i < 10; i++) {
+        res[i] = -2;
+    }
+    return res;
 }
