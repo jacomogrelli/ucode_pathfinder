@@ -14,6 +14,7 @@ void mx_pf_output(char **uniq_mat, int **adj_mat, int **rout_mat) {
             stack[0] = j;
             for (int k = rout_mat[i][j]; k != rout_mat[i][k];) {
                 stack[a] = rout_mat[i][k];
+                k = rout_mat[i][k];
                 a++;
             }
             stack[a] = i;
