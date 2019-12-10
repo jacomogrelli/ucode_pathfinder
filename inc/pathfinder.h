@@ -21,5 +21,6 @@ char **mx_pf_matrix_init(char *argv, int *isl_count);
 int **mx_pf_adjmat(char **mat, char **uniq_mat, int count);
 int **mx_pf_pink_floyd(int **adj_mat, int count);
 void mx_pf_output(char **uniq_mat, int **adj_mat, int **rout_mat);
+void mx_pf_print(char **uniq_mat, int **adj_mat, int *stack);
 
 #endif

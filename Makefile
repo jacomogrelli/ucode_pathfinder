@@ -14,7 +14,8 @@ mx_pf_matrix_init.c \
 mx_pf_error_line_check.c \
 mx_pf_adjmat.c \
 mx_pf_pink_floyd.c \
-mx_pf_output.c
+mx_pf_output.c \
+mx_pf_print.c
 
 SRCF = \
 src/main.c \
@@ -24,7 +25,8 @@ src/mx_pf_matrix_init.c \
 src/mx_pf_error_line_check.c \
 src/mx_pf_adjmat.c \
 src/mx_pf_pink_floyd.c \
-src/mx_pf_output.c
+src/mx_pf_output.c \
+src/mx_pf_print.c
 
 OBJ = \
 main.o \
@@ -34,7 +36,8 @@ mx_pf_matrix_init.o \
 mx_pf_error_line_check.o \
 mx_pf_adjmat.o \
 mx_pf_pink_floyd.o \
-mx_pf_output.o
+mx_pf_output.o \
+mx_pf_print.o
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic -g
 
