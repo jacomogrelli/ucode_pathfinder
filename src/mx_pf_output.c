@@ -1,13 +1,14 @@
 #include "pathfinder.h"
 
 static int *pf_stack_fill(int *res);
+static void pf_ebaniy_auditor(int *stack, int i, int *a);
 
-void mx_pf_output(char **uniq_mat, int **adj_mat, int **rout_mat) {
+void mx_pf_output(char **uniq_mat, int **adj_mat, int **rout_mat)
+{
     int *stack = malloc(sizeof(int) * 10);
     int k;
     int a = 1;
 
-    if (adj_mat[0][0] == 0)
     for (int i = 0; uniq_mat[i]; i++) {
         for (int j = i + 1; uniq_mat[j]; j++) {
             stack = pf_stack_fill(stack);
@@ -20,12 +21,11 @@ void mx_pf_output(char **uniq_mat, int **adj_mat, int **rout_mat) {
                     k = rout_mat[i][b];
                 }
             }
-            stack[a] = i;
-            a = 1;
+            pf_ebaniy_auditor(stack, i, &a);
             mx_pf_print(uniq_mat, adj_mat, stack);
-            // exit (-1);
         }
     }
+    free(stack);
 }
 
 static int *pf_stack_fill(int *res) {
@@ -35,8 +35,7 @@ static int *pf_stack_fill(int *res) {
     return res;
 }
 
-            // for (int b = 0; b < 10; b++) {
-            //     printf("%d ", stack[b]);
-            // }
-            // printf("\n");
-            // a = 1;
+static void pf_ebaniy_auditor(int *stack, int i, int *a) {
+    stack[*a] = i;
+    *a = 1;
+}

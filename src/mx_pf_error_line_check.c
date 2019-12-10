@@ -34,9 +34,9 @@ static char *pf_1word(char *mat, int line) {
         pf_error_invalid_lineval(line);
     while (*mat != '-' && *mat) { //проверка первого города
         if (!mx_isalpha(*mat))
-        pf_error_invalid_lineval(line);
+            pf_error_invalid_lineval(line);
         mat++;
-        }
+    }
     return mat + 1;
 }
 
@@ -46,8 +46,8 @@ static char *pf_2word(char *mat, int line) {
     while (*mat != ',' && *mat) { //проверка второго города
         if (!mx_isalpha(*mat))
             pf_error_invalid_lineval(line);
-            mat++;
-        }
+        mat++;
+    }
     return mat + 1;
 }
 
@@ -56,7 +56,7 @@ static char *pf_3word(char *mat, int line) {
         pf_error_invalid_lineval(line);
     while (*mat != '\n' && *mat) { //проверка длинны моста
         if (!mx_isdigit(*mat))            
-        pf_error_invalid_lineval(line);
+            pf_error_invalid_lineval(line);
         mat++;
     }
     return mat;

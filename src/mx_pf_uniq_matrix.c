@@ -8,7 +8,6 @@ char **mx_pf_uniq_matrix(char **matrix, int *isl_count) {
     char **temp = NULL;
     
     temp = pf_temp_matrix(matrix);
-
     pf_dupdel(temp, isl_count);
     return temp;
 }
@@ -42,15 +41,13 @@ static void pf_dupdel(char **buf, int *count) {
     for (int i = 0; i < len; i++) {
         for (int k = i + 1; k < len; k++) {
             if (mx_strcmp(buf[i], buf[k]) == 0) {
-                // printf("(%s)(%s)\n", buf[i], buf[k]);
-                    tmp = buf[k];
+                tmp = buf[k];
                 for (int j = k; j < len; j++) {
                     buf[j] = buf[j + 1];
                 }
                 mx_strdel(&tmp);
                 len--;
                 k -= 1;
-                // mx_strdel(&buf[len]);
             }
         }
     }
