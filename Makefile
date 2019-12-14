@@ -1,13 +1,19 @@
-NAME = pathfinder
+NAME	=	pathfinder
 
-INC = pathfinder.h
+CFLG	=	-std=c11 $(addprefix -W, all extra error pedantic) -g
 
-INCF = inc/pathfinder.h
+SRCD	=	src
+INCD	=	inc
+OBJD	=	obj
 
-INC_LIB = ./libmx/libmx.a
+LMXD	=	libmx
+LMXA:=	$(LMXD)/libmx.a
+LMXI:=	$(LMXD)/inc
 
-SRC = \
-main.c \
+INC		=	pathfinder.h
+INCS	=	$(addprefix $(INCD)/, $(INC))
+
+SRC	= main.c \
 mx_pf_errorcheck_all.c \
 mx_pf_uniq_matrix.c \
 mx_pf_matrix_init.c \
@@ -17,59 +23,37 @@ mx_pf_pink_floyd.c \
 mx_pf_output.c \
 mx_pf_print.c
 
-SRCF = \
-src/main.c \
-src/mx_pf_errorcheck_all.c \
-src/mx_pf_uniq_matrix.c \
-src/mx_pf_matrix_init.c \
-src/mx_pf_error_line_check.c \
-src/mx_pf_adjmat.c \
-src/mx_pf_pink_floyd.c \
-src/mx_pf_output.c \
-src/mx_pf_print.c
 
-OBJ = \
-main.o \
-mx_pf_errorcheck_all.o \
-mx_pf_uniq_matrix.o \
-mx_pf_matrix_init.o \
-mx_pf_error_line_check.o \
-mx_pf_adjmat.o \
-mx_pf_pink_floyd.o \
-mx_pf_output.o \
-mx_pf_print.o
+SRCS	=	$(addprefix $(SRCD)/, $(SRC))
+OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
 
-CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic -g
+all: install
 
-all: install clean
+install: $(LMXA) $(NAME)
 
-install:
-	@cd libmx && make reinstall
-	@cp $(SRCF) $(INCF) .
-	@clang $(CFLAGS) -c $(SRC) -I $(INC)
-	@clang $(CFLAGS) $(INC_LIB) $(OBJ) -o $(NAME)
-	@mkdir -p ./obj
-	@mv $(OBJ) ./obj
-	@rm -rf $(SRC) $(INC)
+$(NAME): $(OBJS)
+	@clang $(CFLG) $(OBJS) -L$(LMXD) -lmx -o $@
+	@printf "\r\33[2K$@ \033[32;1mcreated\033[0m\n"
 
-uninstall:
-	@rm -rf $(NAME) $(INC_LIB) ./obj
+$(OBJD)/%.o: $(SRCD)/%.c $(INCS)
+	@clang $(CFLG) -c $< -o $@ -I$(INCD) -I$(LMXI)
+	@printf "\r\33[2K$(NAME) \033[33;1mcompile \033[0m$(<:$(SRCD)/%.c=%) "
 
+$(OBJS): | $(OBJD)
+
+$(OBJD):
+	@mkdir -p $@
+
+$(LMXA):
+	@make -sC $(LMXD)
 clean:
-	@rm -rf ./obj
-	@rm -rf $(OBJ) $(SRC) $(INC)
+	@make -sC $(LMXD) $@
+	@rm -rf $(OBJD)
+	@printf "$(OBJD)\t   \033[31;1mdeleted\033[0m\n"
 
-reinstall: uninstall all
+uninstall: clean
+	@make -sC $(LMXD) $@
+	@rm -rf $(NAME)
+	@printf "$(NAME) \033[31;1muninstalled\033[0m\n"
 
-test:
-	@cp $(SRCF) $(INCF) .
-	@clang $(CFLAGS) -c $(SRC) -I $(INC)
-	@clang $(CFLAGS) $(INC_LIB) $(OBJ) -o $(NAME)
-	@mkdir -p ./obj
-	@mv $(OBJ) ./obj
-	@rm -rf $(SRC) $(INC)
-
-git:
-	@git add .
-	@git commit -m "-"
-	@git push
+reinstall: uninstall install

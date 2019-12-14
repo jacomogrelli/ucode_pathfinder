@@ -9,7 +9,7 @@
 #include <stdbool.h>
 #include <fcntl.h>
 #include <malloc/malloc.h>
-#include "libmx/inc/libmx.h"
+#include "libmx.h"
 
 //---ERROR PACK---
 char **mx_pf_errorcheck_all(char **argv, int argc, int *isl_count);
